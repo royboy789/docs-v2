@@ -79,3 +79,8 @@
 
     - title: Linking
       page: extending/linking/index.md
+
+- title: Examples
+  items:
+    - title: jQuery
+      page: examples/jQuery/index.md

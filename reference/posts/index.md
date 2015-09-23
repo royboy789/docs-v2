@@ -34,11 +34,37 @@ resource: Post
 				</tr>
 			{% endfor %}
 		</table>
+		<h2>Code Examples</h2>
+		{% for section in site.data.navigation %}
+			{% if section.title == 'Examples' %}
+				<ul>
+				{% for item in section.items %}
+					<li>
+						<a href="/{{item.page | replace:'index.md','' }}">{{item.title}}</a>
+					</li>
+				{% endfor %}
+				</ul>
+			{% endif %}
+		{% endfor %}
 	</div>
 	<div class="secondary">
 		<h3>Example Request</h3>
 
 		$ curl -X OPTIONS -i http://demo.wp-api.org/{{ page.route_path }}
+		<br/><br/>
+		
+		<h4>jQuery - response to show in console</h4>
+		<strong>GET - retrieve posts</strong><br/>
+		$.get('/wp-json/wp/v2/posts', function(res) { console.log( res ); } );
+		<br/><Br/>
+		<strong>POST - save new post</strong><br/>
+		var newPost = { <br/>
+		&nbsp;&nbsp;&nbsp; title: 'New Post Title',<br/>
+		&nbsp;&nbsp;&nbsp; content: 'New post content',<br/>
+		&nbsp;&nbsp;&nbsp; status: 'publish'<br/>
+		}<br/>
+		$.post('/wp-json/wp/v2/posts', newPost, function(res) { console.log( res ); } );
+		
 	</div>
 </section>
 
